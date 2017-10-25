@@ -1,4 +1,4 @@
-package br.com.pauloh.gerador;
+package br.com.pauloh.tools;
 
 import java.util.Random;
 /**

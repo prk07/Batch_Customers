@@ -7,6 +7,8 @@ public class Customer {
 	private boolean ativo;
 	private float valorTotal;		
 
+	public Customer(){}
+	
 	public Customer(int id, String cpf_cnpj, String nome, boolean ativo,
 			float valorTotal) {
 		this.id = id;
@@ -46,6 +48,12 @@ public class Customer {
 	public void setValorTotal(float valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", cpf_cnpj=" + cpf_cnpj + ", nome="
+				+ nome + ", ativo=" + ativo + ", valorTotal=" + valorTotal
+				+ "]";
+	}
 	
 }

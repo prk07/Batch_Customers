@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.pauloh.dataconnect.ConnectionFactory;
 import br.com.pauloh.model.Customer;
@@ -57,5 +59,33 @@ public class CustomerDAO {
 			
 		}
 		return result;
+	}
+
+	public List<Customer> getCostumers() throws SQLException{
+		List<Customer> listaSaida = new ArrayList<Customer>();
+		
+		con = ConnectionFactory.getConnection();
+		
+		sql = "select * from tb_customer_account";
+		ps = con.prepareStatement(sql);
+		
+		rs = ps.executeQuery();
+		
+		while (rs.next()){			
+			//Verifica se esta ativo
+			boolean ativo = false;
+			if(rs.getInt("is_active")==1){
+				ativo = true;
+			} 
+			listaSaida.add(new Customer(
+					rs.getInt("id_customer"), 
+					rs.getString("cpf_cnpj"), 
+					rs.getString("nm_customer"), 
+					ativo, 
+					rs.getFloat("vl_total")
+				)
+			);
+		}//fim do loop
+		return listaSaida;
 	}
 }

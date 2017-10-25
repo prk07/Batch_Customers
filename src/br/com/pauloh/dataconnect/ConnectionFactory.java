@@ -15,8 +15,8 @@ public class ConnectionFactory {
 	private static Connection connection;
     private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private static final String URL = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL";
-    private static final String USUARIO = "rm76729";
-    private static final String SENHA = "151297";
+    private static final String USUARIO = " ";
+    private static final String SENHA = " ";
 	
     
  
@@ -34,7 +34,7 @@ public class ConnectionFactory {
             	System.out.println("Erro no driver de conexao\n "+e);
             }
             catch(SQLException e) {
-            	System.out.println("Erro na conexao com o banco\n "+e);
+            	System.out.println("Erro na conexao com o banco, Verifique o login, senha e os dados de conexao no dataconnect.ConnectionFactory\n "+e);
             }
         }        
         return connection;
